@@ -1,26 +1,26 @@
 # System Info Checker
 
-System Info Checker is a Python script that collects detailed CPU and memory information from your system and writes it to a text file (`system_info.txt`). It is designed to work on a wide range of operating systems, making it a universal tool for system diagnostics.
+System Info Checker is a universal Python script that collects detailed information about your system's CPU and memory and writes it to a text file (`system_info.txt`). It leverages native, platform-specific tools to gather data and supports a wide range of operating systems.
 
 ## What It Does
 
-- **Collects CPU Information:**  
-  Retrieves details such as the CPU name, base speed, number of cores, and logical processors.
-  
-- **Collects Memory Information:**  
+- **CPU Information:**  
+  Retrieves details such as the CPU name, base clock speed, number of cores, logical processors, and virtualization support (if available).
+
+- **Memory Information:**  
   Gathers the total system RAM.
 
 - **Platform-Specific Data Collection:**  
-  Uses native system utilities (like WMIC on Windows, `lscpu` and `/proc/meminfo` on Linux, and `sysctl` on macOS) to gather the information.
+  Utilizes native system utilities (e.g., WMIC on Windows, `lscpu` and `/proc/meminfo` on Linux, `sysctl` on macOS, etc.) to accurately obtain system details.
 
 - **Output:**  
-  The complete system information is saved to a text file (`system_info.txt`). Minimal console output is provided just to indicate the detected operating system and confirm that the file has been written. The script also pauses before exiting, which is helpful when launched via double-click.
+  The collected information is saved to a text file (`system_info.txt`). The console displays only minimal messages—indicating the detected operating system and confirming that the file has been written—before pausing for user input.
 
 ## Supported Operating Systems
 
-- **Windows** (using WMIC)
-- **Linux** (using `lscpu`, `free`, and `/proc/meminfo`)
-- **macOS (Darwin)** (using `sysctl`)
+- **Windows** (via WMIC)
+- **Linux** (via `lscpu`, `free`, and `/proc/meminfo`)
+- **macOS (Darwin)** (via `sysctl`)
 - **FreeBSD**
 - **OpenBSD**
 - **NetBSD**
@@ -28,15 +28,15 @@ System Info Checker is a Python script that collects detailed CPU and memory inf
 - **AIX**
 - **Haiku**
 - **DragonFly BSD**
-- **Plan 9** (placeholder: not fully implemented)
-- **Minix** (placeholder: not fully implemented)
+- **Plan 9** (minimal implementation)
+- **Minix** (minimal implementation)
 - **Android** (falls back to Linux info)
-- **OS/2** (placeholder: not implemented)
-- **QNX** (placeholder: not implemented)
+
+> **Note:** This script is intended for systems where Python is available. On platforms that do not support Python, this script will not run.
 
 ## How to Use
 
-1. **Ensure you have Python 3 installed.**
+1. **Ensure Python 3 is installed.**
 
 2. **Clone the Repository:**
    ```bash
