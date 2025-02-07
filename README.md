@@ -41,3 +41,7 @@ System Info Checker is a universal Python script that collects detailed informat
 2. **Clone the Repository:**
    ```bash
    git clone https://github.com/yourusername/system-info-checker.git
+
+## Note
+
+This script and readme authored by ChatGPT 03-mini-high. Please do report any problems, as my only OS is Windows.
