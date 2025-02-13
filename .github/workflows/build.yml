@@ -29,8 +29,19 @@ jobs:
       - name: Build executable in release mode
         run: cargo build --release --target ${{ matrix.target }}
 
-      - name: Upload executable artifact
-        uses: actions/upload-artifact@v3.1.2
+      - name: Create GitHub Release
+        id: create_release
+        uses: ncipollo/release-action@v1
         with:
-          name: system_info_checker-${{ matrix.target }}
-          path: target/${{ matrix.target }}/release/system_info_checker.exe
+          tag: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/${{ matrix.target }}/release/system_info_checker.exe
+          asset_name: system_info_checker.exe
+          asset_content_type: application/octet-stream
