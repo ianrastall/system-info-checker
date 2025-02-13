@@ -2,9 +2,6 @@
 
 **System Info Checker** is now a Windows-only tool written in Rust that collects detailed information about your system's CPU, memory, OS, networking, and programming languages environment, and writes it to a text file (`system_info.txt`). It leverages native Windows utilities (via WMIC, PowerShell, etc.) to gather accurate data and provide comprehensive system details—all without opening a console window.
 
-> **Note:**  
-> The original universal Python version is retained for reference only and is not included as a dependency in this repository.
-
 ## What It Does
 
 - **CPU Information:**  
