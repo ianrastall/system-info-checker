@@ -1,0 +1,74 @@
+name: Build Windows Executable
+
+on:
+  push:
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        # This matrix builds for a single target. You can add another entry if you need 32-bit.
+        target: [x86_64-pc-windows-msvc]
+        # For 32-bit, you might add "i686-pc-windows-msvc"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: ${{ matrix.target }}
+          override: true
+
+      - name: Build executable in release mode
+        run: cargo build --release --target ${{ matrix.target }}
+
+      - name: Upload executable artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: system_info_checker-${{ matrix.target }}
+          path: target/${{ matrix.target }}/release/system_info_checker.exe
+name: Build Windows Executable
+
+on:
+  push:
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        # This matrix builds for a single target. You can add another entry if you need 32-bit.
+        target: [x86_64-pc-windows-msvc]
+        # For 32-bit, you might add "i686-pc-windows-msvc"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: ${{ matrix.target }}
+          override: true
+
+      - name: Build executable in release mode
+        run: cargo build --release --target ${{ matrix.target }}
+
+      - name: Upload executable artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: system_info_checker-${{ matrix.target }}
+          path: target/${{ matrix.target }}/release/system_info_checker.exe
