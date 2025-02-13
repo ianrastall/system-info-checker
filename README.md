@@ -1,47 +1,45 @@
 # System Info Checker
 
-System Info Checker is a universal Python script that collects detailed information about your system's CPU and memory and writes it to a text file (`system_info.txt`). It leverages native, platform-specific tools to gather data and supports a wide range of operating systems.
+**System Info Checker** is now a Windows-only tool written in Rust that collects detailed information about your system's CPU, memory, OS, networking, and programming languages environment, and writes it to a text file (`system_info.txt`). It leverages native Windows utilities (via WMIC, PowerShell, etc.) to gather accurate data and provide comprehensive system details—all without opening a console window.
+
+> **Note:**  
+> The original universal Python version is retained for reference only and is not included as a dependency in this repository.
 
 ## What It Does
 
 - **CPU Information:**  
-  Retrieves details such as the CPU name, base clock speed, number of cores, logical processors, and virtualization support (if available).
+  Retrieves details such as the CPU name, base clock speed, number of cores, logical processors, cache sizes, and virtualization support.
 
 - **Memory Information:**  
-  Gathers the total system RAM.
+  Gathers the total system RAM as reported by Windows.
 
-- **Platform-Specific Data Collection:**  
-  Utilizes native system utilities (e.g., WMIC on Windows, `lscpu` and `/proc/meminfo` on Linux, `sysctl` on macOS, etc.) to accurately obtain system details.
+- **Additional System Information:**  
+  Collects OS details (caption, version, build number), system uptime, processor architecture, and basic networking info (hostname and local IP address).
+
+- **Programming Languages Environment:**  
+  Scans for installed programming languages (e.g., Python, Java, Rust, etc.), retrieves their version information, and reports the executable paths.
+
+- **Locale and Encoding:**  
+  Determines the system's default locale and preferred encoding via PowerShell and native commands.
 
 - **Output:**  
-  The collected information is saved to a text file (`system_info.txt`). The console displays only minimal messages—indicating the detected operating system and confirming that the file has been written—before pausing for user input.
+  All collected information is saved to a text file (`system_info.txt`). The tool runs silently without opening any console or GUI windows.
 
-## Supported Operating Systems
+## Supported Operating System
 
-- **Windows** (via WMIC)
-- **Linux** (via `lscpu`, `free`, and `/proc/meminfo`)
-- **macOS (Darwin)** (via `sysctl`)
-- **FreeBSD**
-- **OpenBSD**
-- **NetBSD**
-- **Solaris/Illumos**
-- **AIX**
-- **Haiku**
-- **DragonFly BSD**
-- **Plan 9** (minimal implementation)
-- **Minix** (minimal implementation)
-- **Android** (falls back to Linux info)
-
-> **Note:** This script is intended for systems where Python is available. On platforms that do not support Python, this script will not run.
+- **Windows**
 
 ## How to Use
 
-1. **Ensure Python 3 is installed.**
+### Running the Prebuilt Executable
+
+Download the prebuilt executable from the [GitHub Releases](https://github.com/yourusername/system-info-checker/releases) page and run it. The tool will silently generate `system_info.txt` in the same directory.
+
+### Building from Source
+
+1. **Install Rust:**  
+   Follow the instructions at [https://rustup.rs](https://rustup.rs) to install Rust.
 
 2. **Clone the Repository:**
    ```bash
    git clone https://github.com/yourusername/system-info-checker.git
-
-## Note
-
-This script and readme authored by ChatGPT 03-mini-high. Please do report any problems, as my only OS is Windows.
