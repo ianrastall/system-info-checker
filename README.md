@@ -42,4 +42,4 @@ Download the prebuilt executable from the [GitHub Releases](https://github.com/y
 
 2. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/system-info-checker.git
+   git clone https://github.com/ianrastall/system-info-checker.git
