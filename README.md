@@ -1,42 +1,34 @@
-# System Info Checker
+# System Info Script
 
-**System Info Checker** is now a Windows-only tool written in Rust that collects detailed information about your system's CPU, memory, OS, networking, and programming languages environment, and writes it to a text file (`system_info.txt`). It leverages native Windows utilities (via WMIC, PowerShell, etc.) to gather accurate data and provide comprehensive system details—all without opening a console window.
+A simple C# console application that gathers detailed system information on Windows:
+- Operating system version and architecture
+- Hardware resources (memory, CPU, GPU, disks)
+- Software environment (updates, network adapters)
+- Installed programming languages and their paths
 
-## What It Does
+## Usage
 
-- **CPU Information:**  
-  Retrieves details such as the CPU name, base clock speed, number of cores, logical processors, cache sizes, and virtualization support.
+1. **Compile from Command Line** (most straightforward method):
+   - Open **Developer PowerShell** or **Developer Command Prompt** for Visual Studio (this ensures `csc.exe` is available in your PATH).
+   - Run:
+     ```powershell
+     csc /r:System.Management.dll System-Info-Checker.cs
+     ```
+   - This produces `System-Info-Checker.exe` in the same directory.
 
-- **Memory Information:**  
-  Gathers the total system RAM as reported by Windows.
+2. **Build via Visual Studio** (alternative method):
+   - Create a new Console App project in Visual Studio.
+   - Add a reference to **System.Management** (e.g., `Project -> Add Reference -> Assemblies -> Framework -> System.Management`).
+   - Copy-paste the code into `Program.cs` and build.
 
-- **Additional System Information:**  
-  Collects OS details (caption, version, build number), system uptime, processor architecture, and basic networking info (hostname and local IP address).
+Once compiled, run the generated `.exe`. A file named `system_info.txt` will be created with the system details.
 
-- **Programming Languages Environment:**  
-  Scans for installed programming languages (e.g., Python, Java, Rust, etc.), retrieves their version information, and reports the executable paths.
+## License (Unlicense)
 
-- **Locale and Encoding:**  
-  Determines the system's default locale and preferred encoding via PowerShell and native commands.
+This is free and unencumbered software released into the public domain.
 
-- **Output:**  
-  All collected information is saved to a text file (`system_info.txt`). The tool runs silently without opening any console or GUI windows.
+Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
 
-## Supported Operating System
+In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.
 
-- **Windows**
-
-## How to Use
-
-### Running the Prebuilt Executable
-
-Download the prebuilt executable from the [GitHub Releases](https://github.com/yourusername/system-info-checker/releases) page and run it. The tool will silently generate `system_info.txt` in the same directory.
-
-### Building from Source
-
-1. **Install Rust:**  
-   Follow the instructions at [https://rustup.rs](https://rustup.rs) to install Rust.
-
-2. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/ianrastall/system-info-checker.git
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
