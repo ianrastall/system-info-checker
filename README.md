@@ -1,4 +1,4 @@
-# System Info Script
+# System Info Checker
 
 A simple C# console application that gathers detailed system information on Windows:
 - Operating system version and architecture
